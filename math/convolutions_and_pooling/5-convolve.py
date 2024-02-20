@@ -11,8 +11,8 @@ def convolve(images, kernels, padding='same', stride=(1, 1)):
     m, hm, wm, cm = images.shape
     sh, sw = stride
     if padding == 'same':
-        ph = int(((hm - 1) * sh + kh - hm) / 2) 
-        pw = int(((wm - 1) * sw + kw - wm) / 2) 
+        ph = int(((hm - 1) * sh + kh - hm) / 2) + 1
+        pw = int(((wm - 1) * sw + kw - wm) / 2) + 1
     elif padding == 'valid':
         ph = 0
         pw = 0
