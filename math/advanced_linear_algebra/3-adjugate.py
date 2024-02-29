@@ -11,6 +11,8 @@ def adjugate(matrix):
         for y in range(len(cof)):
             temp[x].append(cof[y][x])
     return temp
+
+
 def determinant(matrix):
     """Function that calculates the determinant of a matrix"""
     if len(matrix) == 1:
