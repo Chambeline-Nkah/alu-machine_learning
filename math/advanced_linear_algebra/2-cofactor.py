@@ -5,6 +5,8 @@
 def cofactor(matrix):
     """Function that calculates the cofactor matrix of a matrix"""
     return minor(matrix)
+
+
 def determinant(matrix):
     """Function that calculates the determinant of a matrix"""
     if len(matrix) == 1:
@@ -47,7 +49,7 @@ def minor(matrix):
             s = []
             for row in (matrix[:x] + matrix[x + 1:]):
                 s.append(row[:y] + row[y + 1:])
-            t.append(determinant(s))
+            sign = (-1) ** ((x + y) % 2)
+            t.append(determinant(s) * sign)
         mino.append(t)
     return mino
-
