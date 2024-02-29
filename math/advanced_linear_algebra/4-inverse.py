@@ -27,7 +27,7 @@ def det(matrix):
     if len(matrix) == 1:
         return matrix[0][0]
     if len(matrix) == 2:
-        dx = (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0])
+        x = (matrix[0][0] * matrix[1][1]) - (matrix[0][1] * matrix[1][0])
         return x
     det = 0
     for x, num in enumerate(matrix):
