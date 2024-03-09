@@ -13,4 +13,3 @@ def correlation(C):
     new = var_values / C
     cor = new @ C @ new
     return cor
-
