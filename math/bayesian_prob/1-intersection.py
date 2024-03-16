@@ -6,7 +6,7 @@ data with the various hypothetical probabilities"""
 import numpy as np
 
 
-def marginal(x, n, P, Pr):
+def intersection(x, n, P, Pr):
     """Funtion that calculates the intersection"""
     if type(n) is not int or n <= 0:
         raise ValueError("n must be a positive integer")
