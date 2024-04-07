@@ -1,17 +1,21 @@
 import os
+import joblib
 import uvicorn
 from fastapi import FastAPI, HTTPException, status 
 from pydantic import BaseModel, Field
-
-# Directory path where the model file is located
-directory_path = r"C:\Users\HomePC\Documents\Maths_ML_ALU\alu-machine_learning\math\summative"
+import pickle
 
 
-model_path = os.path.join(directory_path, 'regression.pkl')
 
-import joblib
-# Load the trained model
-model = joblib.load(model_path)
+
+with open("regression.pkl", "rb") as file:
+    model = pickle.load(file)
+
+prediction = model.predict([[25]])
+print("The predicted price is", prediction[0][0])
+
+
+
 
 app = FastAPI()
 
