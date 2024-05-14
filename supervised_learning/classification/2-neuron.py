@@ -18,20 +18,20 @@ class Neuron:
         self.__b = 0
         self.__A = 0
 
-    #Getter function
+#Getter function
     @property
     def W(self):
-        """Return weights"""
+        """weights"""
         return self.__W
 
     @property
     def b(self):
-        """Return bias"""
+        """bias"""
         return self.__b
 
     @property
     def A(self):
-        """Return output"""
+        """output"""
         return self.__A
 
     def forward_prop(self, X):
