@@ -6,8 +6,7 @@ import numpy as np
 
 
 class Neuron:
-    """class neuron that defines a single neuron performing binary classification"""
-
+    """Single neuron performing binary classification"""
 
     def __init__(self, nx):
         if not isinstance(nx, int):
