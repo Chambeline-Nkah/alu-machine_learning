@@ -18,7 +18,7 @@ class Neuron:
         self.__b = 0
         self.__A = 0
 
-#Getter function
+# Getter function
     @property
     def W(self):
         """weights"""
