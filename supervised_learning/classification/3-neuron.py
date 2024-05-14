@@ -44,4 +44,5 @@ class Neuron:
     def cost(self, Y, A):
         """calculating cost"""
         cost = - ((Y * np.log(A)) + (1 - Y) * np.log(1.0000001 - A))
-        return cost
+        mean_cost = np.mean(cost)
+        return mean_cost
