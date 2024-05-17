@@ -95,15 +95,19 @@ class DeepNeuralNetwork:
             A = cache["A" + str(i)]
             W = self.__weights["W" + str(i)]
 
-            if i == self.__L:
+            if i == self.L:
                 dz = A - Y
             else:
-                dz = da * (A * (1 - A))
+                if self.activation == 'sig':
+                    dz = da * (A * (1 - A))  # sigmoid der
+                elif self.activation == 'tanh':
+                    dz = da * (1 - A**2)  # tanh der
+
             db = dz.mean(axis=1, keepdims=True)
             dw = np.matmul(dz, A_prev.T) / m
             da = np.matmul(W.T, dz)
-            self.__weights['W' + str(i)] -= (alpha * dw)
-            self.__weights['b' + str(i)] -= (alpha * db)
+            self.weights['W' + str(i)] -= (alpha * dw)
+            self.weights['b' + str(i)] -= (alpha * db)
 
     def train(self, X, Y, iterations=5000,
               alpha=0.05, verbose=True, graph=True, step=100):
