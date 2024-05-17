@@ -82,7 +82,6 @@ class DeepNeuralNetwork:
         cost = self.cost(Y, A)
         return prediction, cost
 
-
     def gradient_descent(self, Y, cache, alpha=0.05):
         """grad_descent"""
         m = Y.shape[1]
