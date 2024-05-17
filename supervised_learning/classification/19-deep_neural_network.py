@@ -55,14 +55,14 @@ class DeepNeuralNetwork:
     def forward_prop(self, X):
         """foward_prop of nn"""
         self.cache["A0"] = X
-        for i in range(1, self.L + 1):
-            W = self.weights['W' + str(i)]
-            b = self.weights['b' + str(i)]
-            A = self.cache['A' + str(i - 1)]
-        z = np.matmul(W, A) + b
-        sigmoid = 1 / (1 + np.exp(-z))
-        self.cache["A"+str(i)] = sigmoid
-        return self.cache["A" + str(i)], self.cache
+        for i in range(1, self.L+1):
+            W = self.weights['W'+str(i)]
+            b = self.weights['b'+str(i)]
+            A = self.cache['A'+str(i - 1)]
+            z = np.matmul(W, A) + b
+            sigmoid = 1 / (1 + np.exp(-z))
+            self.cache["A"+str(i)] = sigmoid
+        return self.cache["A"+str(i)], self.cache
 
     def cost(self, Y, A):
         """calculating cost"""
