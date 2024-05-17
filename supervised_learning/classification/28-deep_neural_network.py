@@ -9,11 +9,13 @@ import pickle
 
 class DeepNeuralNetwork:
     """deep nn"""
-    def __init__(self, nx, layers):
+    def __init__(self, nx, layers, activation='sig'):
+        if activation not in ['sig', 'tanh']:
+            raise ValueError("activation must be 'sig' or 'tanh'")
         if not isinstance(nx, int):
-            raise TypeError("nx must be an integer")
+            raise TypeError('nx must be an integer')
         if nx < 1:
-            raise ValueError("nx must be a positive integer")
+            raise ValueError('nx must be a positive integer')
         if not isinstance(layers, list):
             raise TypeError("layers must be a list of positive integers")
         if len(layers) < 1:
@@ -22,6 +24,7 @@ class DeepNeuralNetwork:
         self.__L = len(layers)
         self.__cache = {}
         self.__weights = {}
+        self.__activation = activation
 
         for i in range(self.__L):
             if not isinstance(layers[i], int) or layers[i] < 1:
@@ -38,6 +41,11 @@ class DeepNeuralNetwork:
 
             # Zero initialization
             self.__weights['b' + str(i + 1)] = np.zeros((layers[i], 1))
+
+    @property
+    def activation(self):
+        """activation function """
+        return self.__activation
 
     @property
     def L(self):
@@ -99,7 +107,7 @@ class DeepNeuralNetwork:
                 dz = A - Y
             else:
                 if self.activation == 'sig':
-                    dz = da * (A * (1 - A))  # sigmoid der
+                    dz = da * (A * (1 - A))  # sigmoid derivative
                 elif self.activation == 'tanh':
                     dz = da * (1 - A**2)  # tanh der
 
