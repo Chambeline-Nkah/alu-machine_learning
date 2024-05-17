@@ -26,11 +26,11 @@ class DeepNeuralNetwork:
                 raise TypeError('layers must be a list of positive integers')
 
             if i == 0:
-                # He et al. initialization
+                # He-et-al initialization
                 self.weights['W' + str(i + 1)] = np.random.randn(
                     layers[i], nx) * np.sqrt(2 / nx)
             else:
-                # He et al. initialization
+                # He-et-al initialization
                 self.weights['W' + str(i + 1)] = np.random.randn(
                     layers[i], layers[i - 1]) * np.sqrt(2 / layers[i - 1])
 
