@@ -136,7 +136,7 @@ class DeepNeuralNetwork:
         with open(filename, 'wb') as f:
             pickle.dump(self, f)
 
-
+    @staticmethod
     def load(filename):
         """load pickle file"""
         try:
