@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" create layer """
+"""calculating model accuracy"""
 
 
 import tensorflow as tf
