@@ -3,9 +3,10 @@
 
 
 def batch_norm(Z, gamma, beta, epsilon):
-    """normalizes an unactivated output of a neural network using batch normalization"""
-    mean = Z.mean(axis=1)
-    variance = Z.var(axis=1)
-    Z_norm = (Z - mean) / ((variance + epsilon) * 1/2)
+    """normalizes an unactivated output of a
+    neural network using batch normalization"""
+    mean = Z.mean(axis=0)
+    variance = Z.var(axis=0)
+    Z_norm = (Z - mean) / ((variance + epsilon) ** 1/2)
     Z_outpt = gamma * Z_norm + beta
     return Z_outpt
