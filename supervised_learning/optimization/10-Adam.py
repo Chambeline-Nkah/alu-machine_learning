@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Adam"""
+"""Adam optimizer"""
 
 
 import tensorflow as tf
