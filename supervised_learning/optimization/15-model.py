@@ -16,7 +16,7 @@ def shuffle_data(X, Y):
 
 
 def calculate_loss(y, y_pred):
-    """loss"""
+    """function that calculates the loss"""
     loss = tf.losses.softmax_cross_entropy(y, y_pred)
     return loss
 
