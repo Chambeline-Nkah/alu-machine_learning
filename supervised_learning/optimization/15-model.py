@@ -31,8 +31,13 @@ def calculate_accuracy(y, y_pred):
 
 def create_layer(prev, n, activation):
     """creating layer"""
-    initializer = tf.contrib.layers.variance_scaling_initializer(mode="FAN_AVG")
-    layer = tf.layers.Dense(units=n, activation=activation, kernel_initializer=initializer, name="layer")
+    initializer = tf.contrib.layers.variance_scaling_initializer(
+        mode="FAN_AVG"
+    )
+    layer = tf.layers.Dense(
+        units=n, activation=activation,
+        kernel_initializer=initializer, name="layer"
+    )
     return layer(prev)
 
 
@@ -46,7 +51,14 @@ def create_batch_norm_layer(prev, n, activation):
     offset = tf.Variable(tf.constant(0.0, shape=[n]), name="beta")
     variance_epsilon = 1e-8
 
-    normalization = tf.nn.batch_normalization(x_prev, mean, variance, offset, scale, variance_epsilon)
+    normalization = tf.nn.batch_normalization(
+        x_prev,
+        mean,
+        variance,
+        offset,
+        scale,
+        variance_epsilon,
+    )
     if activation is None:
         return normalization
     return activation(normalization)
