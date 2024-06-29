@@ -9,9 +9,9 @@ def sentientPlanets():
     """ Return list of names of the home planets of all sentient species.
     """
 
-    base_url = "https://swapi-api.alx-tools.com/api"
+    base_url = "https://swapi-api.alx-tools.com/api/species/?page=1"
 
-    res = requests.get(f'{base_url}/species/')
+    res = requests.get(base_url)
 
     output = []
     while res.status_code == 200:
