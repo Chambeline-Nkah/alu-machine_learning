@@ -8,7 +8,7 @@ def availableShips(passengerCount):
     """Returns a list of ships"""
     
     
-    main_url = "https://swapi-api.alx-tools.com/api"
+    main_url = "https://swapi-api.alx-tools.com/api/starships/?page=1"
 
     res = requests.get(f'{main_url}/starships')
 
