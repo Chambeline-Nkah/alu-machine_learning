@@ -7,10 +7,8 @@ import requests
 
 def sentientPlanets():
     """ Return list of names of the home planets of all sentient species"""
-    
+
     url = "https://swapi-api.alx-tools.com/api/species/?page=1"
-
-
     planets = []
 
     while url:
