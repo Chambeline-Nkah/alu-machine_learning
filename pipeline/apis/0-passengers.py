@@ -8,14 +8,14 @@ def availableShips(passengerCount):
     """Returns a list of ships"""
     
     
-    url = "https://swapi-api.alx-tools.com/api"
-    
-    req = requests.get(f'{url}/starships')
+    main_url = "https://swapi-api.alx-tools.com/api"
+
+    res = requests.get(f'{main_url}/starships')
 
     output = []
-    while req.status_code == 200:
-        req = req.json()
-        for ship in req['results']:
+    while res.status_code == 200:
+        res = res.json()
+        for ship in res['results']:
             passengers = ship['passengers'].replace(',', '')
             try:
                 if int(passengers) >= passengerCount:
@@ -23,7 +23,7 @@ def availableShips(passengerCount):
             except ValueError:
                 pass
         try:
-            req = requests.get(req['next'])
+            res = requests.get(res['next'])
         except Exception:
             break
     return output
