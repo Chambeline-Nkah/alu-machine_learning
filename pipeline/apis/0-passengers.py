@@ -10,7 +10,7 @@ def availableShips(passengerCount):
     
     main_url = "https://swapi-api.alx-tools.com/api/starships/?page=1"
 
-    res = requests.get(f'{main_url}/starships')
+    res = requests.get(main_url)
 
     output = []
     while res.status_code == 200:
