@@ -10,7 +10,7 @@ def get_upcoming_launch():
     """Script that displays the upcoming launch"""
 
     url = 'https://api.spacexdata.com/v4/launches/upcoming'
-    
+
     try:
         response = requests.get(url)
         response.raise_for_status()
