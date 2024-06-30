@@ -14,8 +14,7 @@ if __name__ == "__main__":
         rate_limit = int(res.headers.get('X-Ratelimit-Reset'))
         current_time = int(time.time())
         diff = int((rate_limit - current_time) / 60)
-        print(f"Rest in {diff} min")
-        # get remaining rate
+        print('Reset in {} min'.format(int(diff)))
 
     elif res.status_code == 404:
         print("Not found")
