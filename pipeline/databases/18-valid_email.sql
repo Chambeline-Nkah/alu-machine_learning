@@ -1,4 +1,4 @@
-- Validate email
+-- Validate email
 DELIMITER $$
 CREATE TRIGGER reset_valid_email
 BEFORE UPDATE ON users
