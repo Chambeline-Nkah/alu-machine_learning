@@ -18,12 +18,14 @@ class NST:
         used as a content reference, stored as a numpy.ndarray
         alpha - the weight for content cost beta - the weight for style cost"""
         if not isinstance(style_image, np.ndarray) or \
-            len(style_image.shape) != 3:
-            raise TypeError("style_image must be a numpy.ndarray with shape (h, w, 3)")
+           len(style_image.shape) != 3:
+            raise TypeError(
+                "style_image must be a numpy.ndarray with shape (h, w, 3)")
 
         if not isinstance(content_image, np.ndarray) or \
-            len(content_image.shape) != 3:
-            raise TypeError("content_image must be a numpy.ndarray with shape (h, w, 3)")
+           len(content_image.shape) != 3:
+            raise TypeError(
+                "content_image must be a numpy.ndarray with shape (h, w, 3)")
 
         style_height, style_width, style_channel = style_image.shape
         content_height, content_width, content_channel = content_image.shape
@@ -56,10 +58,12 @@ class NST:
         between 0 and 1 and its largest side is 512 pixels"""
 
         if not isinstance(image, np.ndarray) or len(image.shape) != 3:
-            raise TypeError("image must be a numpy.ndarray with shape (h, w, 3)")
+            raise TypeError(
+                "image must be a numpy.ndarray with shape (h, w, 3)")
         image_height, image_width, image_channel = image.shape
         if image_height <= 0 or image_width <= 0 or image_channel != 3:
-            raise TypeError("image must be a numpy.ndarray with shape (h, w, 3)")
+            raise TypeError(
+                "image must be a numpy.ndarray with shape (h, w, 3)")
 
         if image_height > image_width:
             h_new = 512
