@@ -8,17 +8,21 @@ import tensorflow as tf
 class NST:
     """Creating a class NST that performs tasks for neural style transfer"""
 
-    style_layers = ['block1_conv1', 'block2_conv1', 'block3_conv1', 'block4_conv1', 'block5_conv1']
+    style_layers = ['block1_conv1', 'block2_conv1', 'block3_conv1',
+                    'block4_conv1', 'block5_conv1']
     content_layer = 'block5_conv2'
 
     def __init__(self, style_image, content_image, alpha=1e4, beta=1):
-        """style_image - the image used as a style reference, stored as a numpy.ndarray content_image - the image 
+        """style_image - the image used as a style reference,
+        stored as a numpy.ndarray content_image - the image
         used as a content reference, stored as a numpy.ndarray
         alpha - the weight for content cost beta - the weight for style cost"""
-        if not isinstance(style_image, np.ndarray) or len(style_image.shape) != 3:
+        if not isinstance(style_image, np.ndarray) or \
+            len(style_image.shape) != 3:
             raise TypeError("style_image must be a numpy.ndarray with shape (h, w, 3)")
 
-        if not isinstance(content_image, np.ndarray) or len(content_image.shape) != 3:
+        if not isinstance(content_image, np.ndarray) or \
+            len(content_image.shape) != 3:
             raise TypeError("content_image must be a numpy.ndarray with shape (h, w, 3)")
 
         style_height, style_width, style_channel = style_image.shape
