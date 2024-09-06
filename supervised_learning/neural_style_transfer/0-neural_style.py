@@ -68,4 +68,8 @@ class NST:
             w_new = 512
             h_new = int(image_height * (512 / image_width))
         
-        
+        resized = tf.image.resize_bicubic(np.expand_dims(image, axis=0),
+                                          size=(h_new, w_new))
+        rescaled = resized / 255
+        rescaled = tf.clip_by_value(rescaled, 0, 1)
+        return (rescaled)
