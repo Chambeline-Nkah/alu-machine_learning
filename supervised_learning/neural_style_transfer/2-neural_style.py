@@ -117,7 +117,7 @@ class NST:
             raise TypeError("input_layer must be a tensor of rank 4")
         if len(input_layer.shape) != 4:
             raise TypeError("input_layer must be a tensor of rank 4")
-        h, w, c = input_layer.shape
+        _, h, w, c = input_layer.shape
         # Wl = height * width, Hl = number of feature maps
         product = int(h * w)
         features = tf.reshape(input_layer, (product, c))
