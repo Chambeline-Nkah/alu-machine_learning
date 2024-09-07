@@ -220,10 +220,12 @@ class NST:
 
     def generate_image(self, iterations=1000, step=None, lr=0.01,
                        beta1=0.9, beta2=0.99):
-        """iterations - the number of iterations to perform gradient descent over
-        step - if not None, the step at which you should print information
+        """iterations - the number of iterations to
+        perform gradient descent over step - if not None,
+        the step at which you should print information
         about the training, including the final iteration:
-        print Cost at iteration {i}: {J_total}, content {J_content}, style {J_style}
+        print Cost at iteration {i}: {J_total},
+        content {J_content}, style {J_style}
         i is the iteration
         J_total is the total cost
         J_content is the content cost
@@ -231,26 +233,17 @@ class NST:
         lr - the learning rate for gradient descent
         beta1 - the beta1 parameter for gradient descent
         beta2 - the beta2 parameter for gradient descent"""
-        if type(iterations) is not int:
-            raise TypeError("iterations must be an integer")
-        if iterations < 0:
-            raise ValueError("iterations must be positive")
-        if step is not None and type(step) is not int:
-            raise TypeError("step must be an integer")
-        if step is not None and (step < 0 or step > iterations):
-            raise ValueError("step must be positive and less than iterations")
-        if type(lr) is not int and type(lr) is not float:
-            raise TypeError("lr must be a number")
-        if lr < 0:
-            raise ValueError("lr must be positive")
-        if type(beta1) is not float:
-            raise TypeError("beta1 must be a float")
-        if beta1 < 0 or beta1 > 1:
-            raise ValueError("beta1 must be in the range [0, 1]")
-        if type(beta2) is not float:
-            raise TypeError("beta2 must be a float")
-        if beta2 < 0 or beta2 > 1:
-            raise ValueError("beta2 must be in the range [0, 1]")
-        generated_image = self.content_image
-        cost = 0
+         if not isinstance(iterations, int) or iterations <= 0:
+            raise TypeError("iterations must be a positive integer")
+        if not isinstance(lr, (int, float)) or lr <= 0:
+            raise TypeError("lr must be a positive number")
+        if step is not None and (not isinstance(step, int) or step <= 0):
+            raise TypeError("step must be a positive integer")
+        if not isinstance(beta1, (int, float)) or beta1 < 0 or beta1 >= 1:
+            raise TypeError("beta1 must be a float in the [0, 1] range")
+        if not isinstance(beta2, (int, float)) or beta2 < 0 or beta2 >= 1:
+            raise TypeError("beta2 must be a float in the [0, 1] range")
+
+        generated_image = None
+        cost = None
         return generated_image, cost
