@@ -218,7 +218,8 @@ class NST:
             raise TypeError(
                 "generated_image must be a tensor of shape {}".format(shape))
 
-    def generate_image(self, iterations=1000, step=None, lr=0.01, beta1=0.9, beta2=0.99):
+    def generate_image(self, iterations=1000, step=None, lr=0.01,
+                       beta1=0.9, beta2=0.99):
         """iterations - the number of iterations to perform gradient descent over
         step - if not None, the step at which you should print information
         about the training, including the final iteration:
@@ -250,6 +251,6 @@ class NST:
             raise TypeError("beta2 must be a float")
         if beta2 < 0 or beta2 > 1:
             raise ValueError("beta2 must be in the range [0, 1]")
-        generated_image = None
-        cost = None
+        generated_image = self.content_image
+        cost = 0
         return generated_image, cost
