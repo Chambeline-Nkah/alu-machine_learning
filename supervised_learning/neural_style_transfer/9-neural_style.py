@@ -250,6 +250,6 @@ class NST:
             raise TypeError("beta2 must be a float")
         if beta2 < 0 or beta2 > 1:
             raise ValueError("beta2 must be in the range [0, 1]")
-        generated_image = self.content_image
-        cost = 0
+        generated_image = None
+        cost = None
         return generated_image, cost
