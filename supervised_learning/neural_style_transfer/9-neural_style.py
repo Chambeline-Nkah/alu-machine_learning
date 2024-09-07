@@ -233,7 +233,7 @@ class NST:
         lr - the learning rate for gradient descent
         beta1 - the beta1 parameter for gradient descent
         beta2 - the beta2 parameter for gradient descent"""
-         if not isinstance(iterations, int) or iterations <= 0:
+        if not isinstance(iterations, int) or iterations <= 0:
             raise TypeError("iterations must be a positive integer")
         if not isinstance(lr, (int, float)) or lr <= 0:
             raise TypeError("lr must be a positive number")
