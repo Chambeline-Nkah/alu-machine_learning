@@ -178,7 +178,6 @@ class NST:
                 "style_outputs must be a list with a length of {}".format(
                     length))
 
-
     def content_cost(self, content_output):
         """Calculates the content cost for the generated
         image content_output - a tf.Tensor containing the
