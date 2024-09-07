@@ -153,8 +153,9 @@ class NST:
 
     def layer_style_cost(self, style_output, gram_target):
         """Calculates the style cost for a single layer
-        style_output - tf.Tensor of shape (1, h, w, c) containing the layer style
-        output of the generated image gram_target - tf.Tensor of shape (1, c, c)
+        style_output - tf.Tensor of shape (1, h, w, c)
+        containing the layer style output of the
+        generated image gram_target - tf.Tensor of shape (1, c, c)
         the gram matrix of the target style output for that layer"""
         if not isinstance(style_output, (tf.Tensor, tf.Variable)) or \
            len(style_output.shape) != 4:
