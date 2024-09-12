@@ -4,7 +4,8 @@
 import numpy as np
 
 class RNNCell:
-    """class RNN"""
+    """class RNN
+    class constructor: def __init__(self, i, h, o)"""
 
     def __init__(self, i, h, o):
         """i is the dimensionality of the data
@@ -31,8 +32,8 @@ class RNNCell:
         """activation fxn (softmax) where
         x is the value to perform softmax"""
 
-        fxn = np.exp(x - np.max(x, axis=1))
-        softmax = fxn / e_x.sum(axis=1)
+        fxn = np.exp(x - np.max(x, axis=1, keepdims=True))
+        softmax = fxn / e_x.sum(axis=1, keepdims=True)
         return softmax
 
 
