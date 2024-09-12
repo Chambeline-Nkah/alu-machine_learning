@@ -33,7 +33,7 @@ class RNNCell:
         x is the value to perform softmax"""
 
         fxn = np.exp(x - np.max(x, axis=1, keepdims=True))
-        softmax = fxn / e_x.sum(axis=1, keepdims=True)
+        softmax = fxn / fxn.sum(axis=1, keepdims=True)
         return softmax
 
 
