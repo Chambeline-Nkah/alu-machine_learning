@@ -13,7 +13,7 @@ class RNNCell:
         """i is the dimensionality of the data
         h is the dimensionality of the hidden state
         o is the dimensionality of the outputs
-        Creates the public instance attributes Wh, Wy, bh, 
+        Creates the public instance attributes Wh, Wy, bh,
         by that represent the weights and biases of the cell
         Wh and bh are for the concatenated hidden state and input data
         Wy and by are for the output
