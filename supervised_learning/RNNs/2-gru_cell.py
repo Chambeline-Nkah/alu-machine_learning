@@ -52,7 +52,8 @@ class GRUCell:
 
     def forward(self, h_prev, x_t):
         """Function that performs forward propagation for one time step
-        x_t is a numpy.ndarray of shape (m, i) that contains the data input for the cell
+        x_t is a numpy.ndarray of shape (m, i) that
+        contains the data input for the cell
         m is the batche size for the data
         h_prev is a numpy.ndarray of shape (m, h)
         containing the previous hidden state
