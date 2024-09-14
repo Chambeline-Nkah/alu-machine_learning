@@ -73,4 +73,6 @@ class LSTMCell:
         h_next is the next hidden state
         c_next is the next cell state
         y is the output of the cell"""
-        
+
+        summation = np.concatenate((h_prev, x_t), axis=1)
+        update_gate = self.sigmoid
