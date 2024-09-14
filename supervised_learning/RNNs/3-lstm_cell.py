@@ -30,16 +30,16 @@ class LSTMCell:
         side for matrix multiplication
         The biases should be initialized as zeros"""
 
+        self.Wf = np.random.normal(size=(i + h, h))
+        self.Wu = np.random.normal(size=(i + h, h))
+        self.Wc = np.random.normal(size=(i + h, h))
+        self.Wo = np.random.normal(size=(i + h, h))
+        self.Wy = np.random.normal(size=(h, o))
         self.bf = np.zeros((1, h))
         self.bu = np.zeros((1, h))
         self.bc = np.zeros((1, h))
         self.bo = np.zeros((1, h))
         self.by = np.zeros((1, o))
-        self.Wf = np.random.normal(size=(h + i, h))
-        self.Wu = np.random.normal(size=(h + i, h))
-        self.Wc = np.random.normal(size=(h + i, h))
-        self.Wo = np.random.normal(size=(h + i, h))
-        self.Wy = np.random.normal(size=(h, o))
 
     def softmax(self, x):
         """activation fxn (softmax) where
@@ -74,4 +74,12 @@ class LSTMCell:
         y is the output of the cell"""
 
         summation = np.concatenate((h_prev, x_t), axis=1)
-        update_gate = self.sigmoid
+        forget_gate = self.sigmoid(np.matmul(summation, self.Wf) + self.bf)
+        update_gate = self.sigmoid(np.matmul(summation, self.Wu) + self.bu)
+        icell_state = np.tanh(np.matmul(summation, self.Wc) + self.bc)
+
+        c_nxt = forget_gate * c_prev + update_gate * icell_state
+        output_gt = self.sigmoid(np.matmul(summation, self.Wo) + self.bo)
+        h_nxt = output_gt * np.tanh(c_next)
+        y = self.softmax(np.matmul(h_nxt, self.Wy) + self.by)
+        return h_nxt, c_nxt, y
