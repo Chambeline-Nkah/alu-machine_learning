@@ -93,7 +93,7 @@ class BidirectionalCell:
 
         t, m, h = H.shape
 
-        Y = ()
+        Y = []
 
         for step in range(t):
             y = self.softmax(np.matmul(H[step], self.Wy) + self.by)
