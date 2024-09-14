@@ -36,13 +36,16 @@ class BidirectionalCell:
         self.Whf = np.random.normal(size=(h + i, h))
         self.Whb = np.random.normal(size=(h + i, h))
         self.Wy = np.random.normal(size=((2 * h), o))
-        
-    def forward(self, h_prev, x_t):
-        """calculates the hidden state in the forward direction for one time step
 
-            x_t is a numpy.ndarray of shape (m, i) that contains the data input for the cell
+    def forward(self, h_prev, x_t):
+        """calculates the hidden state in the
+        forward direction for one time step
+
+            x_t is a numpy.ndarray of shape (m, i)
+            that contains the data input for the cell
             m is the batch size for the data
-            h_prev is a numpy.ndarray of shape (m, h) containing the previous hidden state
+            h_prev is a numpy.ndarray of shape (m, h)
+            containing the previous hidden state
             Returns: h_next, the next hidden state
         """
         h_x = np.concatenate((h_prev, x_t), axis=1)
