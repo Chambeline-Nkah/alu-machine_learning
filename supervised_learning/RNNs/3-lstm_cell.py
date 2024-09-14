@@ -14,7 +14,7 @@ class LSTMCell:
         i is the dimensionality of the data
         h is the dimensionality of the hidden state
         o is the dimensionality of the outputs
-        Creates the public instance attributes 
+        Creates the public instance attributes
         Wf, Wu, Wc, Wo, Wy, bf, bu, bc, bo,
         by that represent the weights and biases of the cell
 
@@ -32,15 +32,14 @@ class LSTMCell:
 
         self.bf = np.zeros((1, h))
         self.bu = np.zeros((1, h))
-        self.Wf = np.random.normal(size=(h + i, h))
-        self.Wu = np.random.normal(size=(h + i, h))
         self.bc = np.zeros((1, h))
         self.bo = np.zeros((1, h))
+        self.by = np.zeros((1, o))
+        self.Wf = np.random.normal(size=(h + i, h))
+        self.Wu = np.random.normal(size=(h + i, h))
         self.Wc = np.random.normal(size=(h + i, h))
         self.Wo = np.random.normal(size=(h + i, h))
-        self.by = np.zeros((1, o))
         self.Wy = np.random.normal(size=(h, o))
-
 
     def softmax(self, x):
         """activation fxn (softmax) where
