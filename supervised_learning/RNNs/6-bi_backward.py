@@ -58,12 +58,12 @@ class BidirectionalCell:
         backward direction for one time step
             x_t is a numpy.ndarray of shape (m, i) that
             contains the data input for the cell
-            
+
             m is the batch size for the data
             h_next is a numpy.ndarray of shape (m, h)
             containing the next hidden state
             Returns: h_pev, the previous hidden state"""
-            
+ 
         h_x = np.concatenate((h_next, x_t), axis=1)
         h_prev = np.tanh(np.matmul(h_x, self.Whb) + self.bhb)
 
