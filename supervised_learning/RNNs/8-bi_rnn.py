@@ -7,10 +7,13 @@ Defines function that performs forward propagation for bidirectional RNN
 import numpy as np
 
 
-def bi_rnn(bi_cell, X, h_0, h_t):
-    """
+import numpy as np
+
+
+def bi_rnn(bi_cell, X, h_0, h_T):
+    '''
     Performs forward propagation for bidirectional RNN
-    """
+    '''
 
     t, m, i = X.shape
     l, m, h = h_0.shape
