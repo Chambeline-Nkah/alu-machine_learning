@@ -3,10 +3,6 @@
 Defines function that performs forward propagation for bidirectional RNN
 """
 
-
-import numpy as np
-
-
 import numpy as np
 
 
