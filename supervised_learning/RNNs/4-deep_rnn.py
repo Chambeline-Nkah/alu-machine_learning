@@ -16,7 +16,8 @@ def deep_rnn(rnn_cells, X, h_0):
         m is the batch size
 
         i is the dimensionality of the data
-        h_0 is the initial hidden state, given as a numpy.ndarray of shape (l, m, h)
+        h_0 is the initial hidden state, given
+        as a numpy.ndarray of shape (l, m, h)
         h is the dimensionality of the hidden state
 
         Returns: H, Y
