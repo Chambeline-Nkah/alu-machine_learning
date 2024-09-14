@@ -48,7 +48,6 @@ class LSTMCell:
         fxn = np.exp(x - np.max(x, axis=1, keepdims=True))
         softmax = fxn / fxn.sum(axis=1, keepdims=True)
         return softmax
-
     def sigmoid(self, x):
         """activation fxn (sigmoid) where
         X is the value to perform the sigmoid on"""
