@@ -80,6 +80,6 @@ class LSTMCell:
 
         c_nxt = forget_gate * c_prev + update_gate * icell_state
         output_gt = self.sigmoid(np.matmul(summation, self.Wo) + self.bo)
-        h_nxt = output_gt * np.tanh(c_next)
+        h_nxt = output_gt * np.tanh(c_nxt)
         y = self.softmax(np.matmul(h_nxt, self.Wy) + self.by)
         return h_nxt, c_nxt, y
