@@ -16,7 +16,7 @@ def tf_idf(sentences, vocab=None):
     s is the number of sentences in sentences
     f is the number of features analyzed
     features is a list of the features used for embeddings"""
-    
+
     vectorizer = TfidfVectorizer(vocabulary=vocab)
     counts = vectorizer.fit_transform(sentences)
     embed = counts.toarray()
