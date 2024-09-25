@@ -23,4 +23,3 @@ def bag_of_words(sentences, vocab=None):
     embed = counts.toarray()
     features = vectorizer.get_feature_names()
     return embed, features
-    
