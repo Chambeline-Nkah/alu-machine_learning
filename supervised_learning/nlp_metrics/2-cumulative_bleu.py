@@ -88,7 +88,7 @@ def cumulative_bleu(references, sentence, n):
     n is the size of the largest n-gram to use for evaluation
     All n-gram scores should be weighted evenly
 
-    Returns: 
+    Returns:
         the cumulative n-gram BLEU score
     """
     sentence_length = len(sentence)
