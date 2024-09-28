@@ -54,7 +54,7 @@ def ngram_bleu(references, sentence, n):
 
     sentence is a list containing the model proposed sentence
     n is the size of the n-gram to use for evaluation
-    
+
     Returns:
         the n-gram BLEU score
     """
