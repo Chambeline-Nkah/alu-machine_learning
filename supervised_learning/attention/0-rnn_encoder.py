@@ -85,7 +85,8 @@ class RNNEncoder(tf.keras.layers.Layer):
     def call(self, x, initial):
         """
         Public instance method def call(self, x, initial):
-            x is a tensor of shape (batch, input_seq_len) containing the input to
+            x is a tensor of shape (batch, input_seq_len)
+            containing the input to
             the encoder layer as word indices within the vocabulary
             initial is a tensor of shape (batch, units)
             containing the initial hidden state
@@ -93,7 +94,8 @@ class RNNEncoder(tf.keras.layers.Layer):
             Returns: outputs, hidden
             outputs is a tensor of shape (batch, input_seq_len, units)
             containing the outputs of the encoder
-            hidden is a tensor of shape (batch, units) containing the last hidden state of the encoder
+            hidden is a tensor of shape (batch, units)
+            containing the last hidden state of the encoder
         """
         x = self.embedding(x)
         outputs, hidden = self.gru(x, initial_state=initial)
