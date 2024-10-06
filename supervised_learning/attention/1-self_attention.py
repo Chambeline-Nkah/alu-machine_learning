@@ -55,7 +55,7 @@ class SelfAttention(tf.keras.layers.Layer):
     def call(self, s_prev, hidden_states):
         """
         Public instance method def call(self, s_prev, hidden_states):
-            s_prev is a tensor of shape (batch, units) containing 
+            s_prev is a tensor of shape (batch, units) containing
                 the previous decoder hidden state
             hidden_states is a tensor of shape (batch, input_seq_len, units)
                 containing the outputs of the encoder
