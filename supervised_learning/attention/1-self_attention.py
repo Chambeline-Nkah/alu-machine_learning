@@ -46,7 +46,7 @@ class SelfAttention(tf.keras.layers.Layer):
         """
         if type(units) is not int:
             raise TypeError(
-                "units must be int representing the number of hidden units")
+                "units must be an integer")
         super(SelfAttention, self).__init__()
         self.W = tf.keras.layers.Dense(units=units)
         self.U = tf.keras.layers.Dense(units=units)
@@ -68,6 +68,6 @@ class SelfAttention(tf.keras.layers.Layer):
         W = self.W(tf.expand_dims(s_prev, 1))
         U = self.U(hidden_states)
         V = self.V(tf.nn.tanh(W + U))
-        weights = tf.nn.softmax(V, axis=1)
-        context = tf.reduce_sum(weights * hidden_states, axis=1)
-        return context, weights
+        wts = tf.nn.softmax(V, axis=1)
+        cont = tf.reduce_sum(wts * hidden_states, axis=1)
+        return cont, wts
