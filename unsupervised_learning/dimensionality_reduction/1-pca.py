@@ -12,7 +12,7 @@ def pca(X, ndim):
     Returns: T, a numpy.ndarray of shape (n, ndim)
         containing the transformed version of X"""
 
-    avg = np.mean(X, axis=1)
+    avg = np.mean(X, axis=0, keepdims=True)
     A = X - avg
     u, s, v = np.linalg.svd(A)
     W = v.T[:, :ndim]
