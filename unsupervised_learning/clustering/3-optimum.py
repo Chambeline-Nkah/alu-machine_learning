@@ -30,6 +30,7 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
             return None, None
 
         result, df_var = [], []
+        n, d = X.shape
 
         for k in range(kmin, kmax + 1):
             C, clss = kmeans(X, k, iterations)
