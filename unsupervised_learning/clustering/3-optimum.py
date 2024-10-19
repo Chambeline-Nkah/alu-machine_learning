@@ -36,7 +36,7 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
             result.append((C, clss))
             df_var.append(variance(X, C))
 
-        df_var = [df_var[1] - x for x in df_var]
+        df_var = [df_var[0] - x for x in df_var]
 
         return result, df_var
 
