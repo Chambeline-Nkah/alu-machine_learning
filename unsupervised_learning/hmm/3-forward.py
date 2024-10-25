@@ -18,13 +18,15 @@ def forward(Observation, Emission, Transition, Initial):
     M is the number of all possible observations
     Transition is a 2D numpy.ndarray of shape (N, N)
         containing the transition probabilities
-    Transition[i, j] is the probability of transitioning from the hidden state i to j
+    Transition[i, j] is the probability of transitioning
+        from the hidden state i to j
     Initial a numpy.ndarray of shape (N, 1) containing the
         probability of starting in a particular hidden state
 
     Returns: P, F, or None, None on failure
         P is the likelihood of the observations given the model
-        F is a numpy.ndarray of shape (N, T) containing the forward path probabilities
+        F is a numpy.ndarray of shape (N, T) containing
+            the forward path probabilities
         F[i, j] is the probability of being in hidden state
             i at time j given the previous observations
     """
