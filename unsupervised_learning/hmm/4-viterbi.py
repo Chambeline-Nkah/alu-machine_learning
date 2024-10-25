@@ -19,14 +19,16 @@ def viterbi(Observation, Emission, Transition, Initial):
     M is the number of all possible observations
     Transition is a 2D numpy.ndarray of shape (N, N)
         containing the transition probabilities
-    Transition[i, j] is the probability of transitioning from the hidden state i to j
+    Transition[i, j] is the probability of transitioning
+        from the hidden state i to j
     Initial a numpy.ndarray of shape (N, 1) containing the
         probability of starting in a particular hidden state
     Returns: path, P, or None, None on failure
-    path is the a list of length T containing the most likely sequence of hidden states
+    path is the a list of length T containing the most
+        likely sequence of hidden states
     P is the probability of obtaining the path sequence
     """
-    
+
     if type(Observation) is not np.ndarray or len(Observation.shape) != 1:
         return None, None
     T = Observation.shape[0]
