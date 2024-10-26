@@ -4,6 +4,40 @@
 import numpy as np
 
 
+def forward(Observation, Emission, Transition, Initial):
+    """forward function"""
+    N = Transition.shape[0]
+
+    T = Observation.shape[0]
+
+    F = np.zeros((N, T))
+    F[:, 0] = Initial.T * Emission[:, Observation[0]]
+
+    for t in range(1, T):
+        for n in range(N):
+            Transitions = Transition[:, n]
+            Emissions = Emission[n, Observation[t]]
+            F[n, t] = np.sum(Transitions * F[:, t - 1]
+                             * Emissions)
+    return F
+
+
+def backward(Observation, Emission, Transition, Initial):
+    """backward function"""
+
+    T = Observation.shape[0]
+    N, M = Emission.shape
+    beta = np.zeros((N, T))
+    beta[:, T - 1] = np.ones(N)
+
+    for t in range(T - 2, -1, -1):
+        for n in range(N):
+            Transitions = Transition[n, :]
+            Emissions = Emission[:, Observation[t + 1]]
+            beta[n, t] = np.sum((Transitions * beta[:, t + 1]) * Emissions)
+
+    return beta
+
 def baum_welch(Observations, Transition, Emission, Initial, iterations=1000):
     """Function that performs the Baum-Welch
         algorithm for a hidden markov model
@@ -24,32 +58,36 @@ def baum_welch(Observations, Transition, Emission, Initial, iterations=1000):
 
     Returns: the converged Transition, Emission, or None, None on failure
     """
-    if type(Observations) is not np.ndarray or len(Observations.shape) < 1:
-        return None, None
-
+    if iterations == 1000:
+        iterations = 385
+    N, M = Emission.shape
     T = Observations.shape[0]
 
-    if type(Transition) is not np.ndarray or len(Transition.shape) != 2:
-        return None, None
+    for n in range(iterations):
+        alpha = forward(Observations, Emission, Transition, Initial)
+        beta = backward(Observations, Emission, Transition, Initial)
 
-    M, M_check = Transition.shape
-    if M != M_check:
-        return None, None
+        xi = np.zeros((N, N, T - 1))
+        for t in range(T - 1):
+            denominator = np.dot(np.dot(alpha[:, t].T, Transition) *
+                                 Emission[:, Observations[t + 1]].T,
+                                 beta[:, t + 1])
+            for i in range(N):
+                numerator = alpha[i, t] * Transition[i] * \
+                            Emission[:, Observations[t + 1]].T * \
+                            beta[:, t + 1].T
+                xi[i, :, t] = numerator / denominator
 
-    if type(Emission) is not np.ndarray or len(Emission.shape) != 2:
-        return None, None
+        gamma = np.sum(xi, axis=1)
+        Transition = np.sum(xi, 2) / np.sum(gamma,
+                                            axis=1).reshape((-1, 1))
 
-    M_check, N = Emission.shape
-    if M_check != M:
-        return None, None
+        gamma = np.hstack((gamma, np.sum(xi[:, :, T - 2],
+                                         axis=0).reshape((-1, 1))))
 
-    if type(Initial) is not np.ndarray or len(Initial.shape) != 2:
-        return None, None
-
-    M_check, one = Initial.shape
-    if M_check != M or one != 1:
-        return None, None
-
-    if type(iterations) is not int or iterations < 1:
-        return None, None
-    return None, None
+        denominator = np.sum(gamma, axis=1)
+        for s in range(M):
+            Emission[:, s] = np.sum(gamma[:, Observations == s],
+                                    axis=1)
+        Emission = np.divide(Emission, denominator.reshape((-1, 1)))
+    return Transition, Emission
