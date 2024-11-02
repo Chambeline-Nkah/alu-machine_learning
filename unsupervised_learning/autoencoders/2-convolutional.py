@@ -7,7 +7,7 @@ import tensorflow.keras as keras
 def autoencoder(input_dims, filters, latent_dims):
     """
     Function that creates a convolutional autoencoder
-    
+
     input_dims is a tuple of integers containing
         the dimensions of the model input
     filters is a list containing the number of filters
@@ -16,8 +16,10 @@ def autoencoder(input_dims, filters, latent_dims):
     latent_dims is a tuple of integers containing the
         dimensions of the latent space representation
     Each convolution in the encoder should use a kernel size of (3, 3) with
-        same padding and relu activation, followed by max pooling of size (2, 2)
-    Each convolution in the decoder, except for the last two, should use a filter
+        same padding and relu activation,
+            followed by max pooling of size (2, 2)
+    Each convolution in the decoder, except for the last two,
+        should use a filter
         size of (3, 3) with same padding and relu activation,
             followed by upsampling of size (2, 2)
     The second to last convolution should instead use valid padding
